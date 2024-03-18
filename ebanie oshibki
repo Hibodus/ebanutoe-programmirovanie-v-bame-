@@ -1,0 +1,25 @@
+import tkinter as tk
+import tkinter.messagebox as mb
+class Application (tk.Tk):
+    def __init__(self):
+        super().__init__()
+        W,H = 500, 150
+        self.win_center(W,H)
+        self.ap_interface()
+        self.resizable(width=False, height=False)
+    def win_center(self,W,H):
+        WS = self.winfo_screenwidth()
+        HS = self.winfo_screenheight()
+        x = (WS-W)//2
+        y = (HS-H)//2
+        self.geometry('%dx%d+%d+%d'%(W,H,x,y))
+    def ap_interface(self):
+        lbl = tk.Label(self, text = 'Demonstracia SHOWERROR')
+        lbl.pack(side = 'top', padx = 25, pady = 5 , fill = 'x')
+        btn = tk.Button(self, text = 'Oshibka', command = self.btn_click)
+        btn.pack(side = 'bottom', padx = 25, pady = 5, fill = 'x')
+    def btn_click(self):
+        mb.showerror(title = 'Zagolovok okna', message = 'Kakoy-to ERROR')
+if __name__ == '__main__':
+    MainWin = Application()
+    MainWin.mainloop()
